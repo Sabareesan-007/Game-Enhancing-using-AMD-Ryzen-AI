@@ -1,12 +1,15 @@
-#include "YourGameMode.h"
-#include "Engine/StaticMeshActor.h"
+#include "Engine/StaticMesh.h"
+#include "Engine/StaticMeshComponent.h"
 
-void AYourGameMode::BeginPlay()
+void AYourActor::SetLODs(UStaticMesh* Mesh)
 {
-    Super::BeginPlay();
-
-    if (StaticMeshActorClass)
+    if (Mesh)
     {
-        AStaticMeshActor* MeshActor = GetWorld()->SpawnActor<AStaticMeshActor>(StaticMeshActorClass, FVector(0, 0, 0), FRotator(0, 0, 0));
+        UStaticMeshComponent* MeshComponent = FindComponentByClass<UStaticMeshComponent>();
+        if (MeshComponent)
+        {
+            MeshComponent->SetStaticMesh(Mesh);
+            // Set LODs programmatically if needed
+        }
     }
 }
