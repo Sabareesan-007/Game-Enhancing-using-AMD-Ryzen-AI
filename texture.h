@@ -1,13 +1,11 @@
 #include "Engine/Texture2D.h"
-#include "Materials/MaterialInstanceDynamic.h"
 
-void AYourGameMode::BeginPlay()
+void UYourAssetManager::CompressTexture(UTexture2D* Texture)
 {
-    Super::BeginPlay();
-
-    UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(YourMaterial, this);
-    DynamicMaterial->SetTextureParameterValue(FName("YourTextureParameter"), YourTexture);
-
-    // Apply material to your mesh
-    YourMeshComponent->SetMaterial(0, DynamicMaterial);
+    if (Texture)
+    {
+        Texture->CompressionSettings = TC_Default;
+        Texture->MipGenSettings = TMGS_FromTextureGroup;
+        Texture->PostEditChange();
+    }
 }
