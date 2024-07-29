@@ -1,0 +1,26 @@
+# CMake build files
+/build/
+*.cmake
+
+# Compiled files
+*.o
+*.a
+*.so
+*.dll
+
+# Executables
+*.out
+*.exe
+
+# IDE specific files
+*.suo
+*.ncb
+*.user
+*.userosscache
+*.suo
+
+# Logs
+*.log
+
+# AMD Ryzen AI model files
+model_files/
